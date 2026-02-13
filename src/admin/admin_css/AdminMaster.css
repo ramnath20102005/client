@@ -1,0 +1,794 @@
+/*
+ * Admin Master CSS - Mobile-First Luxury Editorial
+ * Fully Responsive & Fluid Design
+ */
+
+:root {
+    --admin-bg: var(--bg-light);
+    --admin-card-bg: #ffffff;
+    --admin-sidebar-bg: #ffffff;
+    --admin-border: var(--border-subtle);
+    --admin-text-primary: var(--text-primary);
+    --admin-text-secondary: var(--text-secondary);
+    --admin-accent: var(--text-primary);
+    --admin-success: #2b8a3e;
+    --admin-warning: #f08c00;
+    --admin-danger: #c92a2a;
+    --admin-font: 'Inter', sans-serif;
+    --admin-header-font: 'Playfair Display', serif;
+}
+
+/* Base Box Sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 1. Mobile Styles (Default) - Fully Fluid                                   */
+/* -------------------------------------------------------------------------- */
+
+.admin-content-wrapper {
+    background-color: var(--admin-bg);
+    min-height: 100vh;
+    padding: clamp(20px, 4vw, 60px) clamp(16px, 3vw, 4%);
+    font-family: var(--admin-font);
+    color: var(--admin-text-primary);
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Dashboard Control Bar */
+.dashboard-control-bar {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 3vw, 20px);
+    margin-bottom: clamp(24px, 4vw, 32px);
+    border-bottom: 1px solid var(--admin-border);
+    padding-bottom: clamp(16px, 3vw, 20px);
+}
+
+.control-info {
+    min-width: 0;
+    /* Prevent text overflow */
+}
+
+.control-info h1 {
+    font-size: clamp(1.75rem, 5vw, 3.5rem);
+    margin-bottom: clamp(6px, 1.5vw, 8px);
+    line-height: 1.1;
+    word-wrap: break-word;
+    letter-spacing: clamp(-1px, -0.02em, -2px);
+}
+
+.control-info p {
+    font-size: clamp(0.65rem, 1.5vw, 0.7rem);
+    text-transform: uppercase;
+    letter-spacing: clamp(1px, 0.15em, 2px);
+}
+
+.control-actions {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 2vw, 12px);
+    width: 100%;
+}
+
+.admin-select,
+.date-picker-mock,
+.sync-btn {
+    width: 100%;
+    min-height: clamp(44px, 6vw, 48px);
+    font-size: clamp(0.75rem, 2vw, 0.8rem);
+    padding: clamp(10px, 2vw, 12px);
+    border: 1px solid var(--admin-border);
+    background: var(--admin-card-bg);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.admin-select:focus,
+.date-picker-mock:focus,
+.sync-btn:focus {
+    outline: 2px solid var(--admin-accent);
+    outline-offset: 2px;
+}
+
+/* KPI Grid */
+.admin-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: clamp(16px, 3vw, 30px);
+    margin-bottom: clamp(32px, 5vw, 40px);
+}
+
+.kpi-card {
+    background: var(--admin-card-bg);
+    border: 1px solid var(--admin-border);
+    padding: clamp(20px, 4vw, 24px);
+    transition: all 0.3s ease;
+    min-width: 0;
+}
+
+@media (hover: hover) {
+    .kpi-card:hover {
+        border-color: var(--admin-accent);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+}
+
+.kpi-value {
+    font-family: var(--admin-header-font);
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+    margin-bottom: clamp(4px, 1vw, 8px);
+    line-height: 1.1;
+    word-break: break-word;
+}
+
+.kpi-label {
+    font-size: clamp(0.65rem, 1.5vw, 0.7rem);
+    text-transform: uppercase;
+    letter-spacing: clamp(0.5px, 0.1em, 1px);
+    color: var(--admin-text-secondary);
+}
+
+/* Section Containers */
+.dashboard-section {
+    margin-bottom: clamp(40px, 6vw, 48px);
+}
+
+.section-header {
+    margin-bottom: clamp(16px, 3vw, 24px);
+}
+
+.section-header h2 {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    margin-bottom: clamp(8px, 2vw, 12px);
+    word-wrap: break-word;
+}
+
+/* Charts Grid */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(20px, 3vw, 24px);
+}
+
+.chart-card {
+    background: var(--admin-card-bg);
+    border: 1px solid var(--admin-border);
+    padding: clamp(20px, 4vw, 24px) clamp(16px, 3vw, 24px);
+    min-width: 0;
+    transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+    .chart-card:hover {
+        border-color: var(--admin-accent);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+}
+
+.chart-card h3 {
+    font-size: clamp(0.7rem, 1.5vw, 0.75rem);
+    margin-bottom: clamp(16px, 3vw, 20px);
+    text-transform: uppercase;
+    letter-spacing: clamp(1px, 0.15em, 2px);
+}
+
+/* Table Styles - Responsive Scroll */
+.admin-table-container {
+    background: #ffffff;
+    border: 1px solid var(--admin-border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    margin-bottom: clamp(20px, 3vw, 24px);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.admin-table th {
+    background: var(--bg-muted);
+    padding: clamp(10px, 2vw, 12px) clamp(12px, 2.5vw, 16px);
+    font-size: clamp(0.6rem, 1.5vw, 0.65rem);
+    text-transform: uppercase;
+    letter-spacing: clamp(0.5px, 0.1em, 1px);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.admin-table td {
+    padding: clamp(12px, 2.5vw, 16px);
+    border-bottom: 1px solid var(--admin-border);
+    font-size: clamp(0.8rem, 2vw, 0.85rem);
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* AI Insights Module */
+.insights-panel {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    padding: clamp(32px, 6vw, 80px) clamp(20px, 4vw, 80px);
+}
+
+.insights-panel h2 {
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    margin-bottom: clamp(12px, 2.5vw, 16px);
+    line-height: 1.2;
+}
+
+.insights-panel p {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+/* Modal - Bottom Sheet on Mobile */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 2000;
+    padding: 0;
+}
+
+.modal-content {
+    background: white;
+    padding: clamp(24px, 4vw, 40px) clamp(20px, 3vw, 40px);
+    width: 100%;
+    max-height: 90vh;
+    border-radius: 16px 16px 0 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.modal-header h2 {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    margin-bottom: clamp(16px, 3vw, 20px);
+    word-wrap: break-word;
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: clamp(10px, 2vw, 12px);
+    margin-top: clamp(20px, 3vw, 24px);
+}
+
+.admin-input,
+.admin-select-full,
+.admin-textarea {
+    width: 100%;
+    min-height: clamp(44px, 6vw, 48px);
+    padding: clamp(10px, 2vw, 12px);
+    font-size: max(16px, 1rem);
+    /* Prevents zoom on iOS */
+    border: 1px solid var(--admin-border);
+    transition: all 0.3s ease;
+}
+
+.admin-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.admin-input:focus,
+.admin-select-full:focus,
+.admin-textarea:focus {
+    outline: 2px solid var(--admin-accent);
+    outline-offset: 2px;
+    border-color: var(--admin-accent);
+}
+
+/* Button Styles */
+.admin-btn {
+    padding: clamp(10px, 2vw, 12px) clamp(16px, 3vw, 24px);
+    font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+    text-transform: uppercase;
+    letter-spacing: clamp(1px, 0.1em, 2px);
+    border: 1px solid var(--admin-accent);
+    background: transparent;
+    color: var(--admin-accent);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+@media (hover: hover) {
+    .admin-btn:hover {
+        background: var(--admin-accent);
+        color: white;
+    }
+}
+
+.admin-btn-primary {
+    background: var(--admin-accent);
+    color: white;
+}
+
+@media (hover: hover) {
+    .admin-btn-primary:hover {
+        background: transparent;
+        color: var(--admin-accent);
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Tablet Styles (768px+)                                                  */
+/* -------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+    .dashboard-control-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: clamp(16px, 2vw, 24px);
+    }
+
+    .control-info {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .control-actions {
+        flex-direction: row;
+        width: auto;
+        flex: 0 1 auto;
+        flex-wrap: wrap;
+    }
+
+    .admin-select,
+    .sync-btn,
+    .date-picker-mock {
+        width: auto;
+        min-width: 140px;
+    }
+
+    .modal-overlay {
+        align-items: center;
+        padding: clamp(20px, 3vw, 24px);
+    }
+
+    .modal-content {
+        max-width: clamp(500px, 60vw, 600px);
+        border-radius: 8px;
+        max-height: 85vh;
+    }
+
+    .modal-actions {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .admin-btn {
+        width: auto;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Desktop Styles (1024px+)                                                */
+/* -------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+    .admin-kpi-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .charts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Large Desktop Styles (1400px+)                                          */
+/* -------------------------------------------------------------------------- */
+@media (min-width: 1400px) {
+    .admin-content-wrapper {
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .charts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. Small Mobile Optimizations (max-width: 480px)                          */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+    .control-actions {
+        gap: 8px;
+    }
+
+    .admin-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 8px 12px;
+    }
+
+    .kpi-card {
+        padding: 16px;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. Accessibility & UX Enhancements                                         */
+/* -------------------------------------------------------------------------- */
+
+/* Focus visible for keyboard navigation */
+.admin-btn:focus-visible,
+.admin-select:focus-visible,
+.admin-input:focus-visible {
+    outline: 3px solid var(--admin-accent);
+    outline-offset: 3px;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+
+    .admin-btn,
+    .admin-select,
+    .admin-input {
+        border-width: 2px;
+    }
+}
+
+/* Print styles */
+@media print {
+
+    .modal-overlay,
+    .control-actions,
+    .sync-btn {
+        display: none;
+    }
+
+    .admin-content-wrapper {
+        padding: 0;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 7. AI Analysis Component Styles                                            */
+/* -------------------------------------------------------------------------- */
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: clamp(16px, 3vw, 20px);
+    width: 100%;
+}
+
+.card-actions h3 {
+    margin-bottom: 0 !important;
+}
+
+.analyze-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f8f9fa;
+    border: 1px solid var(--admin-border);
+    padding: 6px 12px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--admin-text-secondary);
+}
+
+.analyze-btn:hover:not(:disabled) {
+    background: #e9ecef;
+    border-color: var(--admin-text-primary);
+    color: var(--admin-text-primary);
+}
+
+.analyze-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Analysis Overlay & Card */
+.analysis-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    padding: clamp(16px, 3vw, 24px);
+}
+
+.analysis-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 700px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--admin-text-primary);
+    overflow: hidden;
+}
+
+.analysis-header {
+    padding: 24px;
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.analysis-header .title-block {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.analysis-header .ai-icon {
+    color: #2b8a3e;
+}
+
+.analysis-header h2 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    opacity: 0.7;
+}
+
+.analysis-header p {
+    font-size: 1.25rem;
+    font-family: var(--admin-header-font);
+    margin: 4px 0 0 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+.analysis-content {
+    padding: 32px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.summary-section,
+.detailed-section {
+    margin-bottom: 40px;
+}
+
+.summary-section h3,
+.detailed-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.summary-bullets {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+@media (min-width: 600px) {
+    .summary-bullets {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.summary-item {
+    display: flex;
+    gap: 10px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    align-items: flex-start;
+}
+
+.summary-item span {
+    flex: 1;
+}
+
+/* Analysis Section Blocks (Spacial & Icon-based) */
+.analysis-section-block {
+    margin-bottom: 32px;
+    padding: 24px;
+    border-left: 3px solid var(--admin-border);
+    background: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.analysis-section-block:hover {
+    background: #fdfdfd;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.analysis-section-block.critical {
+    border-left-color: #d11a1a;
+    background: #fffafa;
+}
+
+.analysis-section-block.warning {
+    border-left-color: #f39c12;
+}
+
+.section-block-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    opacity: 0.8;
+}
+
+.section-block-header h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.section-block-content p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 12px;
+}
+
+.section-block-content p:last-child {
+    margin-bottom: 0;
+}
+
+.analysis-content {
+    padding: 60px;
+    /* Increased from 40px for spacial feel */
+}
+
+.summary-section {
+    margin-bottom: 48px;
+}
+
+.download-actions {
+    border-top: 1px solid #eee;
+    padding-top: 24px;
+    margin-top: 20px;
+}
+
+.download-actions p {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.6;
+}
+
+.btn-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid #000;
+    background: transparent;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.download-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+.anime-fade-in {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.analysis-snapshot-section {
+    margin-bottom: 40px;
+    background: #f8f9fa;
+    padding: 24px;
+    border: 1px solid var(--admin-border);
+}
+
+.analysis-snapshot-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.snapshot-container {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--admin-border);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.snapshot-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 600px) {
+    .analysis-card {
+        height: 100%;
+        max-height: 100vh;
+    }
+}

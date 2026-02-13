@@ -1,0 +1,444 @@
+/*
+ * Approvals Page CSS - Mobile-First Luxury Editorial
+ * FULLY RESPONSIVE - FIXED HEIGHT LAYOUT
+ */
+
+/* Base Box Sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 
+   STRICT REQUIREMENT: Page container fills viewport.
+   Height = 100vh - TopBar (~72px) - Padding (depends on AdminLayout, ~40px top + bottom).
+   Using a safe calc to ensure fit.
+*/
+.approvals-container {
+    height: calc(100vh - 140px);
+    /* Adjust based on actual header/padding */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Disable page scroll */
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Header */
+.approvals-header {
+    flex-shrink: 0;
+    margin-bottom: clamp(16px, 2vw, 24px);
+    border-bottom: 1px solid var(--border-subtle, #e0e0e0);
+    padding-bottom: clamp(12px, 2vw, 16px);
+}
+
+.approvals-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+    color: var(--text-primary, #1a1a1a);
+    margin: 0 0 clamp(6px, 1vw, 8px) 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.approvals-header p {
+    color: var(--text-secondary, #666);
+    text-transform: uppercase;
+    letter-spacing: clamp(0.8px, 0.12em, 2px);
+    font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+    margin: 0;
+}
+
+/* 
+   Grid Layout 
+   Fills remaining height of the container
+*/
+.approvals-grid {
+    flex: 1;
+    min-height: 0;
+    /* Critical for nested flex scrolling */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+/* Submissions List (Left Panel) */
+.submissions-list {
+    background: #ffffff;
+    border: 1px solid var(--border-subtle, #e0e0e0);
+    padding: 0;
+    overflow-y: auto;
+    /* Internal scroll */
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    height: 100%;
+    /* Fill available space */
+}
+
+/* No Submissions State */
+.no-submissions {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary, #666);
+}
+
+.no-submissions svg {
+    margin-bottom: 16px;
+    color: var(--text-secondary, #999);
+}
+
+/* Submission Detail (Right Panel) */
+.submission-detail {
+    background: #ffffff;
+    border: 1px solid var(--border-subtle, #e0e0e0);
+    padding: clamp(20px, 4vw, 40px);
+    overflow-y: auto;
+    /* Internal scroll */
+    width: 100%;
+    height: 100%;
+    /* Fill available space */
+}
+
+/* Submission Cards */
+.submission-card {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-subtle, #e0e0e0);
+    cursor: pointer;
+    transition: background 0.2s ease;
+    background: #ffffff;
+}
+
+.submission-card:last-child {
+    border-bottom: none;
+}
+
+.submission-card:hover {
+    background: var(--bg-light, #f9f9f9);
+}
+
+.submission-card.active {
+    background: var(--bg-muted, #f0f0f0);
+    border-left: 3px solid var(--text-primary, #1a1a1a);
+}
+
+.submission-card h3 {
+    font-size: 1rem;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 4px;
+    color: var(--text-primary, #1a1a1a);
+}
+
+.submission-card .sub-description {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #666);
+    margin-bottom: 8px;
+}
+
+.sub-meta {
+    font-size: 0.7rem;
+    color: var(--text-secondary, #888);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.view-btn {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+    border: 1px solid var(--border-subtle, #ddd);
+    background: transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.view-btn:hover {
+    background: var(--text-primary, #1a1a1a);
+    color: white;
+    border-color: var(--text-primary, #1a1a1a);
+}
+
+/* Submission Content Styles */
+.detail-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-subtle, #e0e0e0);
+    padding-bottom: 12px;
+}
+
+.data-snapshot {
+    background: var(--bg-light, #f9f9f9);
+    padding: clamp(16px, 3vw, 24px);
+    margin-bottom: 24px;
+    border: 1px solid var(--border-subtle, #e0e0e0);
+}
+
+.media-preview-container {
+    margin-bottom: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #000;
+    border: 1px solid var(--border-subtle);
+}
+
+.snapshot-image {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+    max-height: 500px;
+}
+
+.snapshot-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    border: none;
+}
+
+.source-overlay {
+    padding: 10px;
+    color: #fff;
+    font-size: 0.65rem;
+    background: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.data-snapshot h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: var(--text-secondary, #666);
+}
+
+.snapshot-row {
+    display: flex;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.snapshot-row:last-child {
+    border: none;
+}
+
+.snapshot-row .key {
+    width: 140px;
+    font-weight: 600;
+    color: var(--text-secondary, #666);
+    font-size: 0.75rem;
+    text-transform: capitalize;
+}
+
+.snapshot-row .value {
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--text-primary, #1a1a1a);
+}
+
+/* Form Styles */
+.approval-form textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    border: 1px solid var(--border-subtle, #ddd);
+    margin-bottom: 16px;
+    font-family: inherit;
+    resize: none;
+    /* Prevent manual resize breaking layout */
+}
+
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.approve-btn,
+.reject-btn {
+    padding: 10px 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border: 2px solid;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+}
+
+.approve-btn {
+    border-color: var(--admin-success, #2b8a3e);
+    color: var(--admin-success, #2b8a3e);
+}
+
+.approve-btn:hover {
+    background: var(--admin-success, #2b8a3e);
+    color: white;
+}
+
+.reject-btn {
+    border-color: var(--admin-danger, #c92a2a);
+    color: var(--admin-danger, #c92a2a);
+}
+
+.reject-btn:hover {
+    background: var(--admin-danger, #c92a2a);
+    color: white;
+}
+
+@media (max-width: 480px) {
+    .approvals-header h1 {
+        font-size: 1.25rem;
+    }
+
+    .detail-content h2 {
+        font-size: 1.1rem;
+    }
+
+    .approve-btn,
+    .reject-btn {
+        padding: 12px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Select Prompt */
+.select-prompt {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+/* 
+   DESKTOP TWO-COLUMN LAYOUT (>768px)
+   Matches strict requirements for locked scrolling
+*/
+@media (min-width: 768px) {
+    .approvals-grid {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        /* Fixed left, flexible right */
+        gap: 32px;
+        overflow: hidden;
+        /* Ensure grid doesn't blowout */
+    }
+
+    .submissions-list {
+        /* Height handled by grid stretch, overflow handled by class */
+        border-right: 1px solid var(--border-subtle);
+    }
+
+}
+
+
+/* Base style for back button (hidden on desktop) */
+.back-btn {
+    display: none;
+}
+
+
+/* Mobile Adjustments */
+@media (max-width: 767px) {
+    .approvals-container {
+        height: calc(100vh - 80px);
+        /* Fill viewport but account for header */
+        overflow: hidden;
+    }
+
+    .approvals-header {
+        padding: 0 16px 12px;
+    }
+
+    .approvals-grid {
+        position: relative;
+        overflow: hidden;
+        flex: 1;
+    }
+
+    /* On mobile, list and detail are full width and positioned absolutely/relative to swap */
+    .submissions-list {
+        display: block;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    /* Hide list when detail is active */
+    .approvals-grid.has-selection .submissions-list {
+        display: none;
+    }
+
+    .submission-detail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        padding: 20px 16px;
+        display: none;
+    }
+
+    .submission-detail.active {
+        transform: translateX(0);
+        display: block;
+    }
+
+    .back-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        padding: 0;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .detail-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .snapshot-row {
+        flex-direction: column;
+        padding: 12px 0;
+    }
+
+    .snapshot-row .key {
+        width: 100%;
+        margin-bottom: 4px;
+        opacity: 0.6;
+    }
+
+    .snapshot-row .value {
+        font-size: 0.85rem;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .approve-btn,
+    .reject-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

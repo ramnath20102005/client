@@ -1,0 +1,158 @@
+/*
+ * Add Product - Mobile-First Editorial Submission Form
+ */
+
+.add-product-container {
+    padding: 32px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.form-header {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.form-header h1 {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 12px;
+}
+
+.form-header p {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+.editorial-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-field {
+    margin-bottom: 16px;
+}
+
+.form-field label {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 16px;
+    /* Prevents zoom on iOS */
+    color: var(--text-primary);
+    border-radius: 0;
+}
+
+.form-field textarea {
+    min-height: 100px;
+    border: 1px solid var(--border-subtle);
+    padding: 12px;
+}
+
+.form-submit-block {
+    margin-top: 32px;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    /* Stack on mobile */
+    gap: 12px;
+}
+
+.btn-submit,
+.btn-cancel {
+    width: 100%;
+    padding: 16px;
+    min-height: 48px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-submit {
+    background: var(--text-primary);
+    color: var(--bg-light);
+    border: 1px solid var(--text-primary);
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Tablet Styles (768px+)                                                  */
+/* -------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+    .add-product-container {
+        padding: 60px 40px;
+    }
+
+    .form-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .form-header h1 {
+        font-size: 4rem;
+    }
+
+    .editorial-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .span-full {
+        grid-column: 1 / -1;
+    }
+
+    .form-submit-block {
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 24px;
+    }
+
+    .btn-submit,
+    .btn-cancel {
+        width: auto;
+        padding: 16px 40px;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Desktop Styles (1024px+)                                                */
+/* -------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+    .form-header h1 {
+        font-size: 5rem;
+    }
+
+    .form-field input,
+    .form-field select {
+        font-size: 1.1rem;
+    }
+}

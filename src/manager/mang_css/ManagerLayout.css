@@ -1,0 +1,320 @@
+/* Manager Layout - Professional Dashboard Style */
+:root {
+    /* Fluid spacing */
+    --manager-padding: clamp(16px, 4vw, 60px);
+    --manager-padding-h: clamp(16px, 4vw, 40px);
+    --manager-gap: clamp(24px, 5vw, 60px);
+    --manager-header-h: clamp(56px, 8vh, 72px);
+
+    /* Fluid typography */
+    --fs-manager-brand: clamp(1rem, 2vw, 1.25rem);
+    --fs-manager-nav: clamp(0.85rem, 1.2vw, 0.9rem);
+
+    /* Minimum touch targets */
+    --min-touch-target: 44px;
+
+    /* Transitions */
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.manager-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bg-light);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* --- Top Bar --- */
+.manager-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--manager-padding-h);
+    height: var(--manager-header-h);
+    background-color: white;
+    border-bottom: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 24px);
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--min-touch-target);
+    min-height: var(--min-touch-target);
+}
+
+.menu-toggle:hover {
+    background-color: var(--bg-muted);
+}
+
+.app-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: var(--fs-manager-brand);
+    color: var(--text-primary);
+}
+
+.brand-divider {
+    color: var(--text-tertiary);
+    font-weight: 300;
+}
+
+.brand-context {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-profile .avatar {
+    width: clamp(32px, 4vw, 40px);
+    height: clamp(32px, 4vw, 40px);
+    border-radius: 50%;
+    background-color: var(--text-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.user-profile .username {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* --- Sidebar --- */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.sidebar-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.manager-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(85vw, 280px);
+    background-color: white;
+    z-index: 1050;
+    transform: translateX(-100%);
+    transition: transform var(--transition-smooth);
+    border-right: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.05);
+}
+
+.manager-sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar-header {
+    height: var(--manager-header-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-header h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    min-width: var(--min-touch-target);
+    min-height: var(--min-touch-target);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 0;
+}
+
+.nav-group {
+    margin-bottom: 24px;
+    padding: 0 16px;
+}
+
+.group-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+    padding-left: 12px;
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    font-size: var(--fs-manager-nav);
+    transition: all 0.2s;
+    margin-bottom: 4px;
+    min-height: 48px;
+}
+
+.nav-item:hover {
+    background-color: var(--bg-muted);
+    color: var(--text-primary);
+}
+
+.nav-item.active {
+    background-color: #f0f0f0;
+    color: var(--text-primary);
+    font-weight: 600;
+    border-left: 3px solid var(--text-primary);
+    border-radius: 0 6px 6px 0;
+}
+
+.sidebar-footer {
+    padding: 20px 16px;
+    border-top: 1px solid var(--border-subtle);
+    background-color: #fafafa;
+}
+
+.logout-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    background: none;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--admin-danger);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    min-height: var(--min-touch-target);
+}
+
+.logout-btn:hover {
+    background-color: #fff5f5;
+    border-color: #ffe3e3;
+}
+
+/* --- Main Content --- */
+.manager-main {
+    flex: 1;
+    padding: var(--manager-padding) var(--manager-padding-h);
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ============================================
+   RESPONSIVE OPTIMIZATIONS
+   ============================================ */
+
+/* Mobile specialized */
+@media (max-width: 600px) {
+
+    .brand-context,
+    .user-profile .username {
+        display: none;
+    }
+}
+
+/* Tablet and up: Grid flow for content */
+@media (min-width: 768px) {
+    /* Potential persistent sidebar can be added here if needed, 
+       but keeping existing layout logic for consistency */
+}
+
+/* Touch device optimizations - Universal */
+@media (hover: none) and (pointer: coarse) {
+    .nav-item {
+        padding: 16px 12px;
+    }
+
+    .menu-toggle,
+    .close-btn,
+    .logout-btn {
+        min-height: 50px;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .manager-topbar,
+    .sidebar-header {
+        height: 48px;
+    }
+}

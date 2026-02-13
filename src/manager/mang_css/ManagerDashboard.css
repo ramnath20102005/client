@@ -1,0 +1,205 @@
+/*
+ * Manager Dashboard CSS - Professional Application Style
+ */
+
+:root {
+    --fs-stat: clamp(1.8rem, 4vw, 2.5rem);
+    --fs-section-h: clamp(1.1rem, 2vw, 1.25rem);
+}
+
+.manager-dashboard {
+    max-width: 100%;
+    padding: 0;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Header Section --- */
+.manager-header {
+    margin-bottom: var(--manager-gap);
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.manager-header h1 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.1;
+}
+
+/* --- Overview Stats --- */
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: clamp(16px, 3vw, 24px);
+    margin-bottom: var(--manager-gap);
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: clamp(20px, 4vw, 32px);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+@media (hover: hover) {
+    .stat-card:hover {
+        border-color: var(--text-primary);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    }
+}
+
+.stat-card .label {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    opacity: 0.8;
+}
+
+.stat-card .value {
+    font-size: var(--fs-stat);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    font-family: var(--admin-header-font);
+}
+
+/* --- Dashboard Content Layout --- */
+.dashboard-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--manager-gap);
+}
+
+.content-section {
+    background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: clamp(20px, 4vw, 32px);
+}
+
+.content-section h2 {
+    font-size: var(--fs-section-h);
+    margin: 0 0 24px 0;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recent-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.recent-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    transition: all 0.2s ease;
+}
+
+.recent-item:last-child {
+    border-bottom: none;
+}
+
+.item-info .name {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.item-info .meta {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Status Badges --- */
+.status-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.status-draft {
+    background: #f1f3f5;
+    color: #495057;
+}
+
+.status-pending {
+    background: #fff9db;
+    color: #f08c00;
+}
+
+.status-approved {
+    background: #ebfbee;
+    color: #2b8a3e;
+}
+
+.status-rejected {
+    background: #fff5f5;
+    color: #c92a2a;
+}
+
+
+/* ============================================
+   RESPONSIVE OVERRIDES
+   ============================================ */
+
+/* Mobile specialized */
+@media (max-width: 767px) {
+    .manager-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .recent-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .stat-card:active {
+        transform: scale(0.98);
+    }
+}
