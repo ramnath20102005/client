@@ -23,7 +23,7 @@ function Home() {
               <div className="hero-content">
                 <span className="hero-label">The Foundation</span>
                 <h1 className="hero-title">
-                  Amazon FASHIONS
+                  Ravi FASHIONS
                 </h1>
                 <p className="hero-tagline">
                   Precision in Knitted Garments.
