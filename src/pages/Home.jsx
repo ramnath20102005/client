@@ -23,7 +23,7 @@ function Home() {
               <div className="hero-content">
                 <span className="hero-label">The Foundation</span>
                 <h1 className="hero-title">
-                  RamMass FASHIONS
+                  Amazon FASHIONS
                 </h1>
                 <p className="hero-tagline">
                   Precision in Knitted Garments.
